@@ -30,14 +30,28 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('coluna1'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Numero',
+                  style: TextStyle(fontSize: 75, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Ac'),
+                Text(
+                  'Ac',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
                 Text(''),
                 Text(''),
-                Text('<x'),
+                Text(
+                  '<x',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             Row(
@@ -85,19 +99,43 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('1'),
-                Text('2'),
-                Text('3'),
-                Text('-'),
+                Text(
+                  '1',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '2',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '3',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '-',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('0'),
-                Text(','),
-                Text('='),
-                Text('+'),
+                Text(
+                  '0',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  ',',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '=',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '+',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             Text('coluna6'),
