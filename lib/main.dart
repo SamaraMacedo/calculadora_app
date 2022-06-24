@@ -13,6 +13,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String numero = 'numero';
+
+  double primeiroNumero = 0.0;
+
+  String operacao = '';
+
   void calcular(String tecla) {
     switch (tecla) {
       case '0':
@@ -35,14 +40,44 @@ class _MyAppState extends State<MyApp> {
             //double numeroDouble = double.parse(numero);
             //numero = numeroDouble.toString();
           } else {
-          int numeroInt = int.parse(numero);
+            int numeroInt = int.parse(numero);
             numero = numeroInt.toString();
           }
           numero = numero.replaceAll('.', ',');
         });
         break;
 
-      case 'AC':
+      case '+':
+        operacao = '+';
+        numero = numero.replaceAll(',', '.');
+        primeiroNumero = double.parse(numero);
+        numero = numero.replaceAll('.', ',');
+        numero = '0';
+        break;
+
+      case '=':
+        double resultado = 0.0;
+        if (operacao == '+') {
+          resultado = primeiroNumero + double.parse(numero);
+        }
+
+        String resultadoString = resultado.toString();
+
+        List<String> resultadoPartes = resultadoString.split('.');
+
+        if (int.parse(resultadoPartes[1]) * 1 == 0) {
+          setState(() {
+            numero = int.parse(resultadoPartes[0]).toString();
+          });
+        } else {
+          setState(() {
+            numero = resultado.toString();
+          });
+        }
+
+        break;
+
+      case 'ac':
         setState(() {
           numero = '0';
         });
@@ -85,9 +120,9 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  onTap: () => calcular('AC'),
+                  onTap: () => calcular('ac'),
                   child: Text(
-                    'AC',
+                    'ac',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -172,9 +207,9 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  onTap: () => calcular('1'),
+                  onTap: () => calcular("1"),
                   child: Text(
-                    '1',
+                    "1",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
