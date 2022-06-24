@@ -32,10 +32,10 @@ class _MyAppState extends State<MyApp> {
           numero = numero.replaceAll(',', '.');
 
           if (numero.contains('.')) {
-            double numeroDouble = double.parse(numero);
-            numero = numeroDouble.toString();
+            //double numeroDouble = double.parse(numero);
+            //numero = numeroDouble.toString();
           } else {
-            int numeroInt = int.parse(numero);
+          int numeroInt = int.parse(numero);
             numero = numeroInt.toString();
           }
           numero = numero.replaceAll('.', ',');
