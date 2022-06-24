@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String numero = 'Numero';
+  String numero = 'numero';
   void calcular(String tecla) {
     switch (tecla) {
       case '0':
@@ -25,8 +25,20 @@ class _MyAppState extends State<MyApp> {
       case '7':
       case '8':
       case '9':
+      case ',':
         setState(() {
           numero += tecla;
+
+          numero = numero.replaceAll(',', '.');
+
+          if (numero.contains('.')) {
+            double numeroDouble = double.parse(numero);
+            numero = numeroDouble.toString();
+          } else {
+            int numeroInt = int.parse(numero);
+            numero = numeroInt.toString();
+          }
+          numero = numero.replaceAll('.', ',');
         });
         break;
 
@@ -75,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                 GestureDetector(
                   onTap: () => calcular('AC'),
                   child: Text(
-                    'Ac',
+                    'AC',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -115,7 +127,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => calcular('0'),
+                  onTap: () => calcular('/'),
                   child: Text(
                     '/',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
@@ -147,9 +159,12 @@ class _MyAppState extends State<MyApp> {
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(
-                  'X',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => calcular('x'),
+                  child: Text(
+                    'x',
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
