@@ -60,6 +60,12 @@ class _MyAppState extends State<MyApp> {
 
       case '=':
         double resultado = 0.0;
+
+        if (operacao == '/') {
+          debugPrint('Erro:divisão por Zero');
+          return;
+        }
+
         if (operacao == '+') {
           resultado = primeiroNumero + double.parse(numero);
         }
@@ -153,9 +159,10 @@ class _MyAppState extends State<MyApp> {
                 Text(''),
                 GestureDetector(
                   onTap: () => calcular('<x'),
-                  child: Text(
-                    '<x',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  child: Icon(
+                    Icons.backspace,
+                    size: 35,
+                    color: Colors.green,
                   ),
                 ),
               ],
