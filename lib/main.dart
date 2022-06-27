@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String numero = 'numero';
+  String numero = '0';
 
   double primeiroNumero = 0.0;
 
@@ -48,7 +48,10 @@ class _MyAppState extends State<MyApp> {
         break;
 
       case '+':
-        operacao = '+';
+      case '-':
+      case 'x':
+      case '/':
+        operacao = tecla;
         numero = numero.replaceAll(',', '.');
         primeiroNumero = double.parse(numero);
         numero = numero.replaceAll('.', ',');
@@ -59,6 +62,18 @@ class _MyAppState extends State<MyApp> {
         double resultado = 0.0;
         if (operacao == '+') {
           resultado = primeiroNumero + double.parse(numero);
+        }
+
+        if (operacao == '-') {
+          resultado = primeiroNumero - double.parse(numero);
+        }
+
+        if (operacao == 'x') {
+          resultado = primeiroNumero * double.parse(numero);
+        }
+
+        if (operacao == '/') {
+          resultado = primeiroNumero / double.parse(numero);
         }
 
         String resultadoString = resultado.toString();
@@ -80,6 +95,14 @@ class _MyAppState extends State<MyApp> {
       case 'ac':
         setState(() {
           numero = '0';
+        });
+        break;
+
+      case '<x':
+        setState(() {
+          if (numero.length > 0) {
+            numero = numero.substring(0, numero.length - 1);
+          }
         });
         break;
 
